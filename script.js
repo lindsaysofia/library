@@ -23,14 +23,23 @@ addBookToLibrary(theSecretHistory);
 let animalFarm = new Book('Animal Farm', 'George Orwell', 144, true);
 addBookToLibrary(animalFarm);
 
+let theSecretHistory2 = new Book('The Secret History', 'Donna Tartt', 537, false);
+addBookToLibrary(theSecretHistory2);
+
+let animalFarm2 = new Book('Animal Farm', 'George Orwell', 144, true);
+addBookToLibrary(animalFarm2);
+
+let theSecretHistory23 = new Book('The Secret History', 'Donna Tartt', 537, false);
+addBookToLibrary(theSecretHistory23);
+
 displayLibrary();
 
 function displayLibrary() {
   library.forEach(book => {
     let newBook = document.createElement('div');
     newBook.classList.add('book');
-    let newBookContainer = document.createElement('div');
-    newBookContainer.classList.add('test');
+    let verticalContainer = document.createElement('div');
+    verticalContainer.classList.add('vertical-container');
 
     let newBookTitle = document.createElement('p');
     newBookTitle.classList.add('book-title');
@@ -39,13 +48,13 @@ function displayLibrary() {
     newBookAuthor.classList.add('book-author');
     newBookAuthor.textContent = `${book.author}`;
 
-    newBookContainer.appendChild(newBookTitle);
-    newBookContainer.appendChild(newBookAuthor);
+    verticalContainer.appendChild(newBookTitle);
+    verticalContainer.appendChild(newBookAuthor);
     
     let newBookPages = document.createElement('p');
     newBookPages.classList.add('book-pages');
-    newBookPages.textContent = `${book.numberOfPages} pages`;
-    newBook.appendChild(newBookContainer);
+    newBookPages.textContent = `${book.numberOfPages} pages / ${book.read? 'Read' : 'Not Read'}`;
+    newBook.appendChild(verticalContainer);
     newBook.appendChild(newBookPages);
     bookshelf.appendChild(newBook);
   });

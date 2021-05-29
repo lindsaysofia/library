@@ -8,7 +8,7 @@ body,
 .bookshelf {
   text-transform: capitalize;
   font-family: 'Gentium Book Basic', serif;
-  line-height: 1.1;
+  line-height: 1.6;
   padding: 0;
   margin: 0;
 }
@@ -23,21 +23,25 @@ form {
   width: 90vw;
   height: 60vh;
   align-items: stretch;
-  flex-wrap: wrap;
   overflow: scroll;
 }
 
 .book {
   background-color: green;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 9fr 1fr;
+  border: 1px solid black;
   
 }
 
-.test {
+.vertical-container {
   writing-mode: vertical-rl;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
 }
 
 .book-title {
