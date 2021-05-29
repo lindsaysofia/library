@@ -1,3 +1,4 @@
+let libraryContainer = document.querySelector('.library-container');
 let library = [];
 
 function Book(title, author, numberOfPages, read) {
@@ -13,4 +14,29 @@ function Book(title, author, numberOfPages, read) {
 
 function addBookToLibrary(book) {
   library.push(book);
+}
+
+// Adding a dummy book for now
+let theSecretHistory = new Book('The Secret History', 'Donna Tartt', 537, false);
+addBookToLibrary(theSecretHistory);
+displayLibrary();
+
+function displayLibrary() {
+  library.forEach(book => {
+    let newBook = document.createElement('div');
+    newBook.classList.add('book');
+    let newBookTitle = document.createElement('p');
+    newBookTitle.classList.add('book-title');
+    newBookTitle.textContent = `${book.title}`;
+    let newBookAuthor = document.createElement('p');
+    newBookAuthor.classList.add('book-author');
+    newBookAuthor.textContent = `${book.author}`;
+    let newBookPages = document.createElement('p');
+    newBookPages.classList.add('book-pages');
+    newBookPages.textContent = `${book.numberOfPages} pages`;
+    newBook.appendChild(newBookTitle);
+    newBook.appendChild(newBookAuthor);
+    newBook.appendChild(newBookPages);
+    libraryContainer.appendChild(newBook);
+  });
 }

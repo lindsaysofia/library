@@ -1,0 +1,27 @@
+:root {
+
+}
+
+form {
+  display: none;
+}
+
+.library-container {
+  background-color: black;
+  display: flex;
+  width: 90vw;
+  height: 60vh;
+  align-items: stretch;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.book {
+  background-color: green;
+  text-align: center;
+  writing-mode: vertical-rl;
+}
+
+.book-title {
+  background-color: red;
+}
