@@ -8,7 +8,7 @@ body,
 .bookshelf {
   text-transform: capitalize;
   font-family: 'Gentium Book Basic', serif;
-  line-height: 1.6;
+  line-height: 1.1;
   padding: 0;
   margin: 0;
 }
@@ -29,18 +29,30 @@ form {
 
 .book {
   background-color: green;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+.test {
   writing-mode: vertical-rl;
+  text-align: center;
 }
 
 .book-title {
   font-size: var(--fs-title);
+  background-color: red;
 }
 
 .book-author {
   font-size: var(--fs-author);
+  background-color: blue;
 }
 
 .book-pages {
   font-size: var(--fs-pages);
+  writing-mode: horizontal-tb;
+  text-align: center;
+  background-color: white;
 }
