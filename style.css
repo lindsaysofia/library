@@ -1,12 +1,23 @@
 :root {
+  --fs-title: 3em;
+  --fs-author: 2em;
+  --fs-pages: 1em;
+}
 
+body,
+.bookshelf {
+  text-transform: capitalize;
+  font-family: 'Gentium Book Basic', serif;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
 }
 
 form {
-  display: none;
+  
 }
 
-.library-container {
+.bookshelf {
   background-color: black;
   display: flex;
   width: 90vw;
@@ -23,5 +34,13 @@ form {
 }
 
 .book-title {
-  background-color: red;
+  font-size: var(--fs-title);
+}
+
+.book-author {
+  font-size: var(--fs-author);
+}
+
+.book-pages {
+  font-size: var(--fs-pages);
 }

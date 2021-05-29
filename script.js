@@ -1,4 +1,4 @@
-let libraryContainer = document.querySelector('.library-container');
+let bookshelf = document.querySelector('.bookshelf');
 let library = [];
 
 function Book(title, author, numberOfPages, read) {
@@ -37,6 +37,6 @@ function displayLibrary() {
     newBook.appendChild(newBookTitle);
     newBook.appendChild(newBookAuthor);
     newBook.appendChild(newBookPages);
-    libraryContainer.appendChild(newBook);
+    bookshelf.appendChild(newBook);
   });
 }
