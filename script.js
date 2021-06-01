@@ -35,15 +35,17 @@ addBookToLibrary(theSecretHistory23);
 displayLibrary();
 
 function displayLibrary() {
-  library.forEach(book => {
+  library.forEach((book, index) => {
     let newBook = document.createElement('div');
     newBook.classList.add('book');
+
     let verticalContainer = document.createElement('div');
     verticalContainer.classList.add('vertical-container');
 
     let newBookTitle = document.createElement('p');
     newBookTitle.classList.add('book-title');
     newBookTitle.textContent = `${book.title}`;
+
     let newBookAuthor = document.createElement('p');
     newBookAuthor.classList.add('book-author');
     newBookAuthor.textContent = `${book.author}`;
@@ -54,8 +56,21 @@ function displayLibrary() {
     let newBookPages = document.createElement('p');
     newBookPages.classList.add('book-pages');
     newBookPages.textContent = `${book.numberOfPages} pages / ${book.read? 'Read' : 'Not Read'}`;
+
+    let newBookDeleteButton = document.createElement('button');
+    newBookDeleteButton.dataset.index = index;
+    newBookDeleteButton.classList.add('remove-button');
+    newBookDeleteButton.textContent = 'Remove';
+    newBookDeleteButton.addEventListener('click', removeBook);
+
     newBook.appendChild(verticalContainer);
     newBook.appendChild(newBookPages);
+    newBook.appendChild(newBookDeleteButton);
+
     bookshelf.appendChild(newBook);
   });
+}
+
+function removeBook(e) {
+  console.log(e.target.dataset.index)
 }
