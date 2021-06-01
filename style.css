@@ -1,20 +1,42 @@
 :root {
+  --fs-h1: 4em;
   --fs-title: 3em;
   --fs-author: 2em;
   --fs-pages: 1em;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 body,
 .bookshelf {
   text-transform: capitalize;
   font-family: 'Gentium Book Basic', serif;
-  line-height: 1.1;
+  line-height: normal;
   padding: 0;
   margin: 0;
 }
 
+h1 {
+  font-size: var(--fs-h1);
+  margin: 0;
+}
+
+.add-book-button {
+  margin: 3em;
+}
+
 form {
-  
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
 
 .bookshelf {
@@ -22,16 +44,21 @@ form {
   display: flex;
   width: 90vw;
   height: 60vh;
-  align-items: stretch;
-  overflow: scroll;
+  overflow: auto;
 }
 
+.book::before {
+  content: '';
+  background: repeating-linear-gradient(white, white 5%, black 5%, black 10%);
+}
+
+
 .book {
-  background-color: green;
   display: grid;
-  grid-template-rows: 9fr 1fr;
-  border: 1px solid black;
-  
+  grid-template-rows: 1fr 20fr 1fr 1fr;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  /* box-shadow: 10px -10px 20px black; */
 }
 
 .vertical-container {
@@ -41,22 +68,19 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: yellow;
+  flex-wrap: wrap;
 }
 
 .book-title {
   font-size: var(--fs-title);
-  background-color: red;
 }
 
 .book-author {
   font-size: var(--fs-author);
-  background-color: blue;
 }
 
 .book-pages {
   font-size: var(--fs-pages);
-  writing-mode: horizontal-tb;
   text-align: center;
   background-color: white;
 }
