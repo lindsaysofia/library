@@ -29,9 +29,6 @@ body,
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
   text-align: center;
 }
 
@@ -59,44 +56,35 @@ form {
   width: 90vw;
   height: 60vh;
   overflow: auto;
-  
 }
 
-.book::before {
+/* .book::before {
   content: '';
   background: repeating-linear-gradient(white, white 5%, black 5%, black 10%);
-}
+} */
 
 
 .book {
   display: grid;
-  grid-template-rows: 1fr 20fr 1fr 1fr;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  /* box-shadow: 10px -10px 20px black; */
+  grid-template-rows: 20fr 1fr 1fr;
+  border: 1px solid black;
+  flex: 0 0 auto;
+  min-width: max-content;
+  max-width: max-content;
 }
 
 .vertical-container {
   writing-mode: vertical-rl;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
 }
 
 .book-title {
   font-size: var(--fs-title);
   border-left: 1px solid black;
-  min-width: fit-content;
-  min-height: fit-content;
 }
 
 .book-author {
   font-size: var(--fs-author);
-  min-width: fit-content;
-  min-height: fit-content;
 }
 
 .book-pages {
