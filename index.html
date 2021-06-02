@@ -7,28 +7,30 @@
     <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1>Library</h1>
-    <button class="add-book-button">Add Book</button>
-    <form>
-      <div>
-        <label for="title">Title:</label>
-        <input id="title" type="text" placeholder="title">
-      </div>
-      <div>
-        <label for="author">Author:</label>
-        <input id="author" type="text" placeholder="author">
-      </div>
-      <div>
-        <label for="pages">Number of Pages:</label>
-        <input id="pages" type="number" placeholder="0">
-      </div>
-      <div>
-        <label for="read">Read?:</label>
-        <input id="read" type="checkbox" placeholder="0">
-      </div>
-      <button type="submit">Add New Book</button>
-    </form>
-    <div class="bookshelf"></div>
+    <div class="header"></div>
+    <div class="content-container">
+      <button class="add-book-button">Add Book</button>
+      <form>
+        <div>
+          <label for="title">Title:</label>
+          <input id="title" type="text" placeholder="title">
+        </div>
+        <div>
+          <label for="author">Author:</label>
+          <input id="author" type="text" placeholder="author">
+        </div>
+        <div>
+          <label for="pages">Number of Pages:</label>
+          <input id="pages" type="number" placeholder="0">
+        </div>
+        <div>
+          <label for="read">Read?:</label>
+          <input id="read" type="checkbox" placeholder="0">
+        </div>
+        <button type="submit">Add New Book</button>
+      </form>
+      <div class="bookshelf"></div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
