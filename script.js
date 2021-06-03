@@ -2,7 +2,7 @@ let bookshelf = document.querySelector('.bookshelf');
 const header = document.querySelector('.header');
 const headerContent = 'LIBRARY';
 let library = [];
-let bookColors = ['#C33', '#EE8', '#FFC', '#EED', '#F74'];
+let bookColors = ['#20639B', '#3CAEA3', '#F6D55C', '#ED553B'];
 
 headerContent.split('').forEach(letter => {
   let p = document.createElement('p');
@@ -47,46 +47,47 @@ displayLibrary();
 
 function displayLibrary() {
   library.forEach((book, index) => {
+    let newBook = document.createElement('div');
+    newBook.classList.add('book');
+
+    let verticalContainer = document.createElement('div');
+    verticalContainer.classList.add('vertical-container');
+
+    let newBookTitle = document.createElement('p');
+    newBookTitle.classList.add('book-title');
+    newBookTitle.textContent = `${book.title}`;
+
+    let newBookAuthor = document.createElement('p');
+    newBookAuthor.classList.add('book-author');
+    newBookAuthor.textContent = `${book.author}`;
+
+    verticalContainer.appendChild(newBookTitle);
+    verticalContainer.appendChild(newBookAuthor);
     
+    let newBookPages = document.createElement('p');
+    newBookPages.classList.add('book-pages');
+    newBookPages.textContent = `${book.numberOfPages} pages`;
+
+    let newBookRead = document.createElement('p');
+    newBookRead.classList.add('book-read');
+    newBookRead.textContent = `${book.read? 'Read' : 'Not Read'}`;
+
+    let newBookDeleteButton = document.createElement('button');
+    newBookDeleteButton.dataset.index = index;
+    newBookDeleteButton.classList.add('remove-button');
+    newBookDeleteButton.textContent = 'Remove';
+    newBookDeleteButton.addEventListener('click', removeBook);
+
+    newBook.appendChild(verticalContainer);
+    newBook.appendChild(newBookPages);
+    newBook.appendChild(newBookRead);
+    newBook.appendChild(newBookDeleteButton);
+
+    bookshelf.appendChild(newBook);
+
+    newBook.style.backgroundColor = bookColors[index % (bookColors.length)];
+    newBook.title = `"${book.title}" by ${book.author}`;
   });
-}
-
-function createBook(book) {
-  let newBook = document.createElement('div');
-  newBook.classList.add('book');
-
-  let verticalContainer = document.createElement('div');
-  verticalContainer.classList.add('vertical-container');
-
-  let newBookTitle = document.createElement('p');
-  newBookTitle.classList.add('book-title');
-  newBookTitle.textContent = `${book.title}`;
-
-  let newBookAuthor = document.createElement('p');
-  newBookAuthor.classList.add('book-author');
-  newBookAuthor.textContent = `${book.author}`;
-
-  verticalContainer.appendChild(newBookTitle);
-  verticalContainer.appendChild(newBookAuthor);
-  
-  let newBookPages = document.createElement('p');
-  newBookPages.classList.add('book-pages');
-  newBookPages.textContent = `${book.numberOfPages} pages / ${book.read? 'Read' : 'Not Read'}`;
-
-  let newBookDeleteButton = document.createElement('button');
-  newBookDeleteButton.dataset.index = index;
-  newBookDeleteButton.classList.add('remove-button');
-  newBookDeleteButton.textContent = 'Remove';
-  newBookDeleteButton.addEventListener('click', removeBook);
-
-  newBook.appendChild(verticalContainer);
-  newBook.appendChild(newBookPages);
-  newBook.appendChild(newBookDeleteButton);
-
-  bookshelf.appendChild(newBook);
-
-  newBook.style.backgroundColor = bookColors[index % (bookColors.length)];
-  newBook.title = `"${book.title}" by ${book.author}`;
 }
 
 function removeBook(e) {
@@ -94,8 +95,10 @@ function removeBook(e) {
   let domChildren = document.querySelectorAll('.book');
   for (let i = 0; i <= index; i++) {
     if (i === index) {
-      bookshelf.removeChild(index);
+      bookshelf.removeChild(domChildren[index]);
     }
   };
   library.splice(index, 1);
+  bookshelf.innerHTML = '';
+  displayLibrary();
 }
