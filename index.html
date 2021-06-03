@@ -13,21 +13,24 @@
       <form>
         <div>
           <label for="title">Title:</label>
-          <input id="title" type="text" placeholder="title">
+          <input id="title" type="text" placeholder="title" required>
         </div>
         <div>
           <label for="author">Author:</label>
-          <input id="author" type="text" placeholder="author">
+          <input id="author" type="text" placeholder="author" required>
         </div>
         <div>
           <label for="pages">Number of Pages:</label>
-          <input id="pages" type="number" placeholder="0">
+          <input id="pages" type="number" placeholder="0" required>
         </div>
         <div>
           <label for="read">Read?:</label>
           <input id="read" type="checkbox" placeholder="0">
         </div>
-        <button type="submit">Add New Book</button>
+        <div>
+          <button type="submit">Add New Book</button>
+          <button class="close-form">Close Form</button>
+        </div>
       </form>
       <div class="bookshelf"></div>
     </div>

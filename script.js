@@ -1,4 +1,6 @@
 let bookshelf = document.querySelector('.bookshelf');
+const addBookButton = document.querySelector('.add-book-button');
+const form = document.querySelector('form');
 const header = document.querySelector('.header');
 const headerContent = 'LIBRARY';
 let library = [];
@@ -25,23 +27,15 @@ function addBookToLibrary(book) {
   library.push(book);
 }
 
+addBookButton.addEventListener('click', addBook);
+form.addEventListener('submit', handleSubmit);
+
 // Adding a dummy book for now
 let theSecretHistory = new Book('The Secret History verttt long very long name The Secret History verttt long very long name', 'Donna Tartt he Secret History verttt long very long name The Secret History verttt long very long name', 537, false);
 addBookToLibrary(theSecretHistory);
 
 let animalFarm = new Book('Animal Farm', 'George Orwell', 144, true);
 addBookToLibrary(animalFarm);
-
-let theSecretHistory2 = new Book('The Secret History', 'Donna Tartt', 537, false);
-addBookToLibrary(theSecretHistory2);
-
-let animalFarm2 = new Book('Animal Farm', 'George Orwell', 144, true);
-addBookToLibrary(animalFarm2);
-
-let theSecretHistory23 = new Book('The Secret History', 'Donna Tartt', 537, false);
-addBookToLibrary(theSecretHistory23);
-addBookToLibrary(theSecretHistory);
-addBookToLibrary(theSecretHistory);
 
 displayLibrary();
 
@@ -101,4 +95,14 @@ function removeBook(e) {
   library.splice(index, 1);
   bookshelf.innerHTML = '';
   displayLibrary();
+}
+
+function addBook(e) {
+  form.classList.add('active');
+  form.style.top = `${bookshelf.offsetTop}px`
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  console.log('submit');
 }

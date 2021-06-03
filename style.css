@@ -71,9 +71,19 @@ button:hover {
 }
 
 form {
-  visibility: hidden;
-  width: 0px;
-  height: 0px;
+  /* visibility: hidden; */
+  position: absolute;
+  background-color: white;
+  width: 90vw;
+  height: 60vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+}
+
+form.active {
+  visibility: visible;
 }
 
 .bookshelf {
