@@ -43,6 +43,7 @@ addBookToLibrary(animalFarm);
 displayLibrary();
 
 function displayLibrary() {
+  bookshelf.innerHTML = '';
   library.forEach((book, index) => {
     let newBook = document.createElement('div');
     newBook.classList.add('book');
@@ -96,7 +97,6 @@ function removeBook(e) {
     }
   };
   library.splice(index, 1);
-  bookshelf.innerHTML = '';
   displayLibrary();
 }
 
@@ -105,10 +105,18 @@ function addBook(e) {
   formContainer.style.top = `${bookshelf.offsetTop}px`
 }
 
-function closeForm(e) {
+function closeForm() {
   formContainer.classList.remove('active');
 }
 
 function handleSubmit(e) {
   e.preventDefault();
+  let title = e.target[0].value;
+  let author = e.target[1].value;
+  let pages = e.target[2].value;
+  let read = e.target[3].checked;
+  let book = new Book(title, author, pages, read);
+  addBookToLibrary(book);
+  displayLibrary();
+  closeForm();
 }
