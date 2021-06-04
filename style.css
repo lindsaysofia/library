@@ -108,6 +108,9 @@ form {
 
 .bookshelf {
   background-color: black;
+  background-image: url('bg-2.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   width: 90vw;
   height: 60vh;
