@@ -70,8 +70,8 @@ button:hover {
   cursor: pointer;
 }
 
-form {
-  /* visibility: hidden; */
+.form-container {
+  visibility: hidden;
   position: absolute;
   background-color: white;
   width: 90vw;
@@ -79,11 +79,31 @@ form {
   display: grid;
   justify-content: center;
   align-items: center;
+  grid-template-rows: 1fr 10fr;
   font-size: 1em;
 }
 
-form.active {
+.form-container.active {
   visibility: visible;
+}
+
+.close-form-button {
+  justify-self: end;
+  width: 10px;
+  height: 5px;
+  text-align: center;
+}
+
+form {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 50%;
+}
+
+.form-input {
+  display: grid;
 }
 
 .bookshelf {

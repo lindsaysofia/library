@@ -1,5 +1,7 @@
 let bookshelf = document.querySelector('.bookshelf');
 const addBookButton = document.querySelector('.add-book-button');
+const closeFormButton = document.querySelector('.close-form-button');
+const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('form');
 const header = document.querySelector('.header');
 const headerContent = 'LIBRARY';
@@ -28,6 +30,7 @@ function addBookToLibrary(book) {
 }
 
 addBookButton.addEventListener('click', addBook);
+closeFormButton.addEventListener('click', closeForm);
 form.addEventListener('submit', handleSubmit);
 
 // Adding a dummy book for now
@@ -98,11 +101,14 @@ function removeBook(e) {
 }
 
 function addBook(e) {
-  form.classList.add('active');
-  form.style.top = `${bookshelf.offsetTop}px`
+  formContainer.classList.add('active');
+  formContainer.style.top = `${bookshelf.offsetTop}px`
+}
+
+function closeForm(e) {
+  formContainer.classList.remove('active');
 }
 
 function handleSubmit(e) {
   e.preventDefault();
-  console.log('submit');
 }

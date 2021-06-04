@@ -10,28 +10,28 @@
     <div class="header"></div>
     <div class="content-container">
       <button class="add-book-button">Add Book</button>
-      <form>
-        <div>
-          <label for="title">Title:</label>
-          <input id="title" type="text" placeholder="title" required>
-        </div>
-        <div>
-          <label for="author">Author:</label>
-          <input id="author" type="text" placeholder="author" required>
-        </div>
-        <div>
-          <label for="pages">Number of Pages:</label>
-          <input id="pages" type="number" placeholder="0" required>
-        </div>
-        <div>
-          <label for="read">Read?:</label>
-          <input id="read" type="checkbox" placeholder="0">
-        </div>
-        <div>
+      <div class="form-container">
+        <button class="close-form-button">X</button>
+        <form>
+          <div class="form-input">
+            <label for="title">Title</label>
+            <input id="title" type="text" placeholder="title" required>
+          </div>
+          <div class="form-input">
+            <label for="author">Author</label>
+            <input id="author" type="text" placeholder="author" required>
+          </div>
+          <div class="form-input">
+            <label for="pages">Number of Pages</label>
+            <input id="pages" type="number" placeholder="0" required>
+          </div>
+          <div class="form-input">
+            <label for="read">Read?</label>
+            <input id="read" type="checkbox" placeholder="0">
+          </div>
           <button type="submit">Add New Book</button>
-          <button class="close-form">Close Form</button>
-        </div>
-      </form>
+        </form>
+      </div>
       <div class="bookshelf"></div>
     </div>
     <script src="script.js"></script>
