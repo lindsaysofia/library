@@ -5,8 +5,11 @@ const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('form');
 const header = document.querySelector('.header');
 const headerContent = 'LIBRARY';
-let library = [];
+
+let library = (window.localStorage.library !== 'undefined') && (window.localStorage.library) ? JSON.parse(window.localStorage.library) : [];
 let bookColors = ['#20639B', '#3CAEA3', '#F6D55C', '#ED553B'];
+
+displayLibrary();
 
 headerContent.split('').forEach(letter => {
   let p = document.createElement('p');
@@ -19,28 +22,20 @@ function Book(title, author, numberOfPages, read) {
   this.author = author;
   this. numberOfPages = numberOfPages;
   this.read = read;
+}
 
-  this.info = function() {
-    return `${this.title} by ${this.author}, ${this.numberOfPages}, ${this.read ? 'already read' : 'not read yet'}`;
-  }
+Book.prototype.info = function() {
+  return `${this.title} by ${this.author}, ${this.numberOfPages}, ${this.read ? 'already read' : 'not read yet'}`;
 }
 
 function addBookToLibrary(book) {
   library.push(book);
+  window.localStorage.setItem('library', JSON.stringify(library));
 }
 
 addBookButton.addEventListener('click', addBook);
 closeFormButton.addEventListener('click', closeForm);
 form.addEventListener('submit', handleSubmit);
-
-// Adding a dummy book for now
-let theSecretHistory = new Book('The Secret History verttt long very long name The Secret History verttt long very long name', 'Donna Tartt he Secret History verttt long very long name The Secret History verttt long very long name', 537, false);
-addBookToLibrary(theSecretHistory);
-
-let animalFarm = new Book('Animal Farm', 'George Orwell', 144, true);
-addBookToLibrary(animalFarm);
-
-displayLibrary();
 
 function displayLibrary() {
   bookshelf.innerHTML = '';
@@ -69,6 +64,8 @@ function displayLibrary() {
     let newBookRead = document.createElement('p');
     newBookRead.classList.add('book-read');
     newBookRead.textContent = `${book.read? 'Read' : 'Not Read'}`;
+    newBookRead.dataset.index = index;
+    newBookRead.addEventListener('click', toggleReadStatus);
 
     let newBookDeleteButton = document.createElement('button');
     newBookDeleteButton.dataset.index = index;
@@ -97,6 +94,7 @@ function removeBook(e) {
     }
   };
   library.splice(index, 1);
+  window.localStorage.setItem('library', JSON.stringify(library));
   displayLibrary();
 }
 
@@ -117,6 +115,16 @@ function handleSubmit(e) {
   let read = e.target[3].checked;
   let book = new Book(title, author, pages, read);
   addBookToLibrary(book);
+  window.localStorage.setItem('library', JSON.stringify(library));
   displayLibrary();
   closeForm();
+  form.reset();
+}
+
+function toggleReadStatus(e) {
+  let index = e.target.dataset.index;
+  let book = library[index];
+  book.read = !book.read;
+  e.target.textContent = (book.read ? 'Read' : 'Not Read');
+  window.localStorage.setItem('library', JSON.stringify(library));
 }

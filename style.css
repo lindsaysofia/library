@@ -142,6 +142,11 @@ form {
   text-align: center;
 }
 
+.book-read:hover {
+  color: white;
+  cursor: pointer;
+}
+
 .remove-button {
   margin: 1em;
 }
