@@ -1,3 +1,5 @@
+// Refactored code from script.js to use class instead of contructors
+
 let bookshelf = document.querySelector('.bookshelf');
 const addBookButton = document.querySelector('.add-book-button');
 const closeFormButton = document.querySelector('.close-form-button');
@@ -17,15 +19,17 @@ headerContent.split('').forEach(letter => {
   header.appendChild(p);
 });
 
-function Book(title, author, numberOfPages, read) {
-  this.title = title;
-  this.author = author;
-  this.numberOfPages = numberOfPages;
-  this.read = read;
-}
+class Book {
+  constructor(title, author, numberOfPages, read) {
+    this.title = title;
+    this.author = author;
+    this.numberOfPages = numberOfPages;
+    this.read = read;
+  }
 
-Book.prototype.info = function() {
-  return `${this.title} by ${this.author}, ${this.numberOfPages}, ${this.read ? 'already read' : 'not read yet'}`;
+  info() {
+    return `${this.title} by ${this.author}, ${this.numberOfPages}, ${this.read ? 'already read' : 'not read yet'}`;
+  }
 }
 
 function addBookToLibrary(book) {
